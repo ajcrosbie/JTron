@@ -1,20 +1,16 @@
 import javax.swing.*;
-import java.awt.event.*;
-import java.awt.*;
-import java.util.ArrayList;
 
 public class Game {
-    public static Snake snake = new Snake();
-    public static ArrayList<Wall> walls = new ArrayList<Wall>();
-    public static boolean running = true;
+    static final int DELAY = 75;
 
     public static void main(String[] args) {
-        gloop();
+        gstart();
     }
 
-    public static void gloop() {
+    public static void gstart() {
         JFrame frame = new JFrame();
         Gpanel panel = new Gpanel();
+        panel.gStart();
         frame.add(panel);
         frame.setTitle("tron");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -22,14 +18,11 @@ public class Game {
         frame.pack();
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
-        while (running) {
-            walls.add(new Wall(snake.x, snake.y));
-            snake.move();
-            panel.
-        }
+        time(panel);
     }
 
-    public static void Smove(KeyEvent imp) {
-        snake.imMove(imp);
+    public static void time(Gpanel panel) {
+        Timer timer = new Timer(DELAY, panel);
+        timer.start();
     }
 }
